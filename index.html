@@ -13,7 +13,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(to bottom, #1a3a6b 0%, #2d5a8c 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -30,42 +30,56 @@
         .header {
             text-align: center;
             color: white;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
+            background: linear-gradient(to bottom, #1a3a6b 0%, #2d5a8c 100%);
+            border: 2px solid #d4af37;
+            border-radius: 16px;
+            padding: 28px 24px;
+            box-shadow: 0 4px 20px rgba(26, 58, 107, 0.3);
         }
 
         .header h1 {
-            font-size: 32px;
+            font-size: 26px;
             font-weight: 700;
-            margin-bottom: 10px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+            border: 2px solid #d4af37;
+            padding: 10px 16px;
+            display: inline-block;
         }
 
         .header p {
-            font-size: 14px;
-            opacity: 0.9;
-            font-weight: 300;
+            font-size: 13px;
+            opacity: 0.95;
+            font-weight: 400;
+            color: #e8d4a8;
+            line-height: 1.6;
+            margin: 16px 0 0 0;
+            border-top: 1px solid #d4af37;
+            padding-top: 14px;
         }
 
         /* Input Section */
         .input-section {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(135deg, #264a7a 0%, #3a5f8e 100%);
+            border-left: 3px solid #d4af37;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .input-section:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
         }
 
         .input-label {
             display: flex;
             align-items: center;
             margin-bottom: 15px;
-            color: #333;
+            color: white;
             font-weight: 600;
             font-size: 16px;
         }
@@ -74,12 +88,12 @@
             width: 24px;
             height: 24px;
             margin-right: 10px;
-            color: #667eea;
+            color: #d4af37;
         }
 
         .input-description {
             font-size: 13px;
-            color: #888;
+            color: #bbb;
             margin-bottom: 15px;
             margin-left: 34px;
         }
@@ -93,11 +107,11 @@
         }
 
         .btn-paste-header {
-            background: #f0f0f0;
-            color: #667eea;
-            border: none;
+            background: rgba(212, 175, 55, 0.2);
+            color: #d4af37;
+            border: 1px solid #d4af37;
             padding: 8px 16px;
-            border-radius: 10px;
+            border-radius: 8px;
             font-weight: 600;
             font-size: 12px;
             cursor: pointer;
@@ -109,7 +123,7 @@
         }
 
         .btn-paste-header:hover {
-            background: #e8e8e8;
+            background: rgba(212, 175, 55, 0.3);
             transform: translateY(-2px);
         }
 
@@ -142,31 +156,35 @@
         textarea {
             width: 100%;
             height: 140px;
-            border: 2px solid #f0f0f0;
-            border-radius: 15px;
+            border: 1px solid #d4af37;
+            border-radius: 8px;
             padding: 15px;
             font-family: 'Courier New', monospace;
             font-size: 13px;
-            color: #333;
+            color: #ccc;
             resize: none;
             transition: all 0.3s ease;
-            background: #fafafa;
+            background: rgba(0, 0, 0, 0.2);
         }
 
         textarea:focus {
             outline: none;
-            border-color: #667eea;
-            background: white;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #d4af37;
+            background: rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        textarea::placeholder {
+            color: #888;
         }
 
         .btn-convert {
             width: 100%;
             padding: 14px 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: #d4af37;
+            color: #1a3a6b;
             border: none;
-            border-radius: 12px;
+            border-radius: 8px;
             font-weight: 700;
             font-size: 16px;
             cursor: pointer;
@@ -175,13 +193,14 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
             min-height: 48px;
         }
 
         .btn-convert:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+            background: #c9a127;
         }
 
         .btn-convert:active {
@@ -190,23 +209,24 @@
 
         /* Output Section */
         .output-section {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(135deg, #264a7a 0%, #3a5f8e 100%);
+            border-left: 3px solid #d4af37;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .output-section:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
         }
 
         .output-label {
             display: flex;
             align-items: center;
             margin-bottom: 15px;
-            color: #333;
+            color: white;
             font-weight: 600;
             font-size: 16px;
         }
@@ -215,7 +235,7 @@
             width: 24px;
             height: 24px;
             margin-right: 10px;
-            color: #667eea;
+            color: #d4af37;
         }
 
         .status-message {
@@ -240,17 +260,17 @@
         }
 
         .json-output {
-            background: #f8f9fa;
-            border: 2px solid #f0f0f0;
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
-            max-height: 350px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid #d4af37;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+            max-height: 220px;
             overflow-y: auto;
             font-family: 'Courier New', monospace;
-            font-size: 12px;
-            color: #333;
-            line-height: 1.6;
+            font-size: 11px;
+            color: #ccc;
+            line-height: 1.5;
             display: none;
         }
 
@@ -284,17 +304,17 @@
         }
 
         .json-output::-webkit-scrollbar-track {
-            background: #f0f0f0;
+            background: rgba(0, 0, 0, 0.2);
             border-radius: 10px;
         }
 
         .json-output::-webkit-scrollbar-thumb {
-            background: #ccc;
+            background: #d4af37;
             border-radius: 10px;
         }
 
         .json-output::-webkit-scrollbar-thumb:hover {
-            background: #999;
+            background: #c9a127;
         }
 
         .output-actions {
@@ -305,10 +325,10 @@
 
         .btn-action {
             padding: 12px 16px;
-            border: 2px solid #f0f0f0;
-            border-radius: 12px;
-            background: white;
-            color: #667eea;
+            border: 1px solid #d4af37;
+            border-radius: 8px;
+            background: rgba(212, 175, 55, 0.2);
+            color: #d4af37;
             font-weight: 600;
             font-size: 14px;
             cursor: pointer;
@@ -320,16 +340,16 @@
         }
 
         .btn-action:hover {
-            border-color: #667eea;
-            background: #f8f9ff;
+            border-color: #d4af37;
+            background: rgba(212, 175, 55, 0.3);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.15);
         }
 
         .btn-action.active {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-color: transparent;
+            background: #d4af37;
+            color: #1a3a6b;
+            border-color: #d4af37;
         }
 
         .empty-state {
@@ -348,27 +368,28 @@
         .empty-state p {
             font-size: 14px;
             margin-bottom: 5px;
+            color: #bbb;
         }
 
         .empty-state small {
             font-size: 12px;
-            color: #bbb;
+            color: #999;
         }
 
         /* Info Box */
         .info-box {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-            border-left: 4px solid #667eea;
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 3px solid #d4af37;
             border-radius: 8px;
             padding: 12px 16px;
             margin-top: 20px;
             font-size: 12px;
-            color: #666;
+            color: #bbb;
             line-height: 1.6;
         }
 
         .info-box strong {
-            color: #667eea;
+            color: #d4af37;
             display: block;
             margin-bottom: 8px;
         }
@@ -382,11 +403,12 @@
         }
 
         .feature-card {
-            background: white;
-            border-radius: 15px;
+            background: linear-gradient(135deg, #264a7a 0%, #3a5f8e 100%);
+            border-left: 3px solid #d4af37;
+            border-radius: 12px;
             padding: 20px;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         .feature-icon {
@@ -397,33 +419,86 @@
         .feature-title {
             font-weight: 600;
             font-size: 13px;
-            color: #333;
+            color: white;
             margin-bottom: 5px;
         }
 
         .feature-desc {
             font-size: 11px;
-            color: #999;
+            color: #bbb;
         }
 
         /* Responsive */
         @media (max-width: 600px) {
+            .header {
+                border: 1px solid #d4af37;
+                padding: 20px 16px;
+                margin-bottom: 20px;
+            }
+
             .header h1 {
-                font-size: 24px;
+                font-size: 22px;
+                padding: 8px 12px;
+                margin-bottom: 10px;
+            }
+
+            .header p {
+                font-size: 12px;
+                padding-top: 10px;
+                margin-top: 10px;
             }
 
             .input-section,
             .output-section {
-                padding: 20px;
+                padding: 16px;
+                margin-bottom: 16px;
+            }
+
+            .input-label {
+                font-size: 15px;
+            }
+
+            .input-description {
+                font-size: 12px;
+                margin-bottom: 12px;
             }
 
             textarea {
-                height: 120px;
+                height: 110px;
                 font-size: 12px;
+                padding: 12px;
+            }
+
+            .btn-convert {
+                font-size: 15px;
+                min-height: 44px;
+            }
+
+            .output-label {
+                font-size: 15px;
+                margin-bottom: 12px;
+            }
+
+            .json-output {
+                max-height: 200px;
+                font-size: 10px;
+                padding: 12px;
+                margin-bottom: 12px;
+            }
+
+            .btn-action {
+                padding: 10px 12px;
+                font-size: 13px;
+            }
+
+            .info-box {
+                font-size: 11px;
+                padding: 10px 12px;
+                margin-top: 12px;
             }
 
             .features {
-                grid-template-columns: 1fr;
+                display: none;
             }
         }
     </style>
@@ -432,8 +507,8 @@
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <h1>🔄 VLESS to JSON</h1>
-            <p>Convert dengan Tier 1+2+3 Optimization</p>
+            <h1>CASSANOVA</h1>
+            <p>VLESS to JSON Converter<br/><br/>Smart Conversion with Performance &<br/>Advanced Optimization</p>
         </div>
 
         <!-- Input Section -->
@@ -449,7 +524,7 @@
                 Paste VLESS URI lengkap dengan parameter di kotak bawah
             </div>
             <div class="input-header-row">
-                <span style="color: #999; font-size: 12px;">Atau gunakan:</span>
+                <span style="color: #bbb; font-size: 12px;">Atau gunakan:</span>
                 <button class="btn-paste-header" onclick="pasteFromClipboard()" title="Paste VLESS URI dari clipboard">
                     📋 Paste dari Clipboard
                 </button>
@@ -588,137 +663,4 @@
                 dns: {
                     hosts: {
                         "domain:googleapis.cn": "googleapis.com",
-                        "dns.alidns.com": ["223.5.5.5", "223.6.6.6", "2400:3200::1", "2400:3200:baba::1"],
-                        "one.one.one.one": ["1.1.1.1", "1.0.0.1", "2606:4700:4700::1111", "2606:4700:4700::1001"],
-                        "dot.pub": ["1.12.12.12", "120.53.53.53"],
-                        "dns.google": ["8.8.8.8", "8.8.4.4", "2001:4860:4860::8888", "2001:4860:4860::8844"],
-                        "dns.quad9.net": ["9.9.9.9", "149.112.112.112", "2620:fe::fe", "2620:fe::9"],
-                        "common.dot.dns.yandex.net": ["77.88.8.8", "77.88.8.1", "2a02:6b8::feed:0ff", "2a02:6b8:0:1::feed:0ff"]
-                    },
-                    servers: ["1.1.1.1", "8.8.8.8", "223.5.5.5"]
-                },
-                inbounds: [
-                    {
-                        listen: "127.0.0.1", port: 10808, protocol: "socks",
-                        settings: { auth: "noauth", udp: true, userLevel: 8 },
-                        sniffing: { destOverride: ["http", "tls", "quic"], enabled: true, routeOnly: true },
-                        streamSettings: { sockopt: { tcpFastOpen: true, keepAliveInterval: 20 } },
-                        tag: "socks"
-                    },
-                    {
-                        listen: "127.0.0.1", port: 10809, protocol: "http",
-                        settings: { timeout: 360 }, tag: "http"
-                    },
-                    {
-                        listen: "127.0.0.1", port: 10853, protocol: "dokodemo-door",
-                        settings: { address: "1.1.1.1", network: "tcp,udp", port: 53 }, tag: "dns-in"
-                    }
-                ],
-                log: { loglevel: "warning" },
-                outbounds: [
-                    {
-                        mux: { concurrency: 8, enabled: true }, protocol: "vless",
-                        settings: {
-                            vnext: [{
-                                address: params.address, port: params.port,
-                                users: [{ encryption: params.encryption || "none", flow: "", id: params.uuid, level: 8 }]
-                            }]
-                        },
-                        streamSettings: {
-                            network: params.type, security: params.security,
-                            tlsSettings: {
-                                allowInsecure: false, serverName: params.sni,
-                                alpn: ["h2", "http/1.1"], enableSessionResumption: true
-                            },
-                            wsSettings: { headers: { Host: params.host }, path: params.path },
-                            sockopt: { tcpFastOpen: true, keepAliveInterval: 20 }
-                        },
-                        tag: "proxy"
-                    },
-                    {
-                        protocol: "freedom", settings: { domainStrategy: "UseIP" },
-                        streamSettings: { sockopt: { tcpFastOpen: true, keepAliveInterval: 20 } },
-                        tag: "direct"
-                    },
-                    {
-                        protocol: "blackhole", settings: { response: { type: "http" } },
-                        tag: "block"
-                    },
-                    { protocol: "dns", tag: "dns-out" }
-                ],
-                remarks: params.remarks,
-                routing: {
-                    domainStrategy: "IPIfNonMatch",
-                    rules: [
-                        { inboundTag: ["dns-in"], outboundTag: "dns-out", type: "field" },
-                        { ip: ["1.1.1.1"], outboundTag: "proxy", port: "53", type: "field" },
-                        { ip: ["223.5.5.5"], outboundTag: "direct", port: "53", type: "field" },
-                        { ip: ["geoip:private"], outboundTag: "direct", type: "field" },
-                        { domain: ["geosite:private"], outboundTag: "direct", type: "field" },
-                        { type: "field", protocol: ["bittorrent"], outboundTag: "block" }
-                    ]
-                }
-            };
-        }
-
-        function convertToJson() {
-            try {
-                const vlessUri = document.getElementById('vlessInput').value.trim();
-                const params = parseVlessUri(vlessUri);
-                currentJson = generateOptimalJson(params);
-                
-                document.getElementById('jsonOutput').textContent = JSON.stringify(currentJson, null, 2);
-                document.getElementById('jsonOutput').classList.add('show');
-                document.getElementById('emptyState').style.display = 'none';
-                document.getElementById('outputActions').style.display = 'grid';
-                
-                showStatus('✅ JSON berhasil dikonversi!', true);
-            } catch (err) {
-                showStatus(`❌ ${err.message}`, false);
-                document.getElementById('jsonOutput').classList.remove('show');
-                document.getElementById('emptyState').style.display = 'block';
-                document.getElementById('outputActions').style.display = 'none';
-            }
-        }
-
-        function copyToClipboard() {
-            if (currentJson) {
-                navigator.clipboard.writeText(JSON.stringify(currentJson, null, 2));
-                const btn = document.getElementById('copyBtn');
-                btn.textContent = '✅ Copied!';
-                btn.classList.add('active');
-                setTimeout(() => {
-                    btn.textContent = '📋 Copy JSON';
-                    btn.classList.remove('active');
-                }, 2000);
-            }
-        }
-
-        function downloadJson() {
-            if (currentJson) {
-                const element = document.createElement('a');
-                const file = new Blob([JSON.stringify(currentJson, null, 2)], {type: 'application/json'});
-                element.href = URL.createObjectURL(file);
-                element.download = 'v2ray-config-optimal.json';
-                document.body.appendChild(element);
-                element.click();
-                document.body.removeChild(element);
-            }
-        }
-
-        function showStatus(message, isSuccess) {
-            const statusEl = document.getElementById('statusMessage');
-            statusEl.textContent = message;
-            statusEl.classList.remove('success');
-            if (isSuccess) statusEl.classList.add('success');
-            statusEl.classList.add('show');
-            setTimeout(() => statusEl.classList.remove('show'), 3000);
-        }
-
-        // Auto-convert on load
-        window.addEventListener('load', () => {
-            convertToJson();
-        });
-    </script>
-</body>
-</html>
+                        "
