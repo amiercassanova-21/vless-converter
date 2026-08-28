@@ -394,43 +394,102 @@
                 dns: {
                     hosts: {
                         "domain:googleapis.cn": "googleapis.com",
-                        "one.one.one.one": ["1.1.1.1", "1.0.0.1"],
-                        "dns.google": ["8.8.8.8", "8.8.4.4"]
+                        "domain:gstatic.com": "googleapis.com",
+                        "domain:google.com": "8.8.8.8"
                     },
-                    servers: ["1.1.1.1", "8.8.8.8", "223.5.5.5"]
+                    servers: [
+                        {
+                            "address": "1.1.1.1",
+                            "clientIp": "1.2.3.4",
+                            "domains": ["geosite:google"]
+                        },
+                        {
+                            "address": "8.8.8.8",
+                            "domains": ["geosite:facebook", "geosite:youtube"]
+                        },
+                        {
+                            "address": "223.5.5.5",
+                            "domains": ["geosite:cn"]
+                        },
+                        "1.1.1.1",
+                        "8.8.8.8",
+                        "223.5.5.5"
+                    ]
                 },
                 inbounds: [
                     {
                         listen: "127.0.0.1",
                         port: 10808,
                         protocol: "socks",
-                        settings: { auth: "noauth", udp: true, userLevel: 8 },
-                        sniffing: { destOverride: ["http", "tls", "quic"], enabled: true },
+                        settings: {
+                            auth: "noauth",
+                            udp: true,
+                            userLevel: 8
+                        },
+                        sniffing: {
+                            destOverride: ["http", "tls", "quic", "fakedns"],
+                            enabled: true,
+                            routeOnly: true
+                        },
+                        streamSettings: {
+                            sockopt: {
+                                tcpFastOpen: true,
+                                keepAliveInterval: 20,
+                                tfo: 256
+                            }
+                        },
                         tag: "socks"
                     },
                     {
                         listen: "127.0.0.1",
                         port: 10809,
                         protocol: "http",
-                        settings: { timeout: 360 },
+                        settings: {
+                            timeout: 360,
+                            allowTransparent: true
+                        },
+                        streamSettings: {
+                            sockopt: {
+                                tcpFastOpen: true,
+                                keepAliveInterval: 20
+                            }
+                        },
                         tag: "http"
+                    },
+                    {
+                        listen: "127.0.0.1",
+                        port: 10853,
+                        protocol: "dokodemo-door",
+                        settings: {
+                            address: "1.1.1.1",
+                            network: "tcp,udp",
+                            port: 53
+                        },
+                        tag: "dns-in"
                     }
                 ],
-                log: { loglevel: "warning" },
+                log: {
+                    loglevel: "warning",
+                    access: ""
+                },
                 outbounds: [
                     {
                         protocol: "vless",
                         settings: {
-                            vnext: [{
-                                address: p.address,
-                                port: p.port,
-                                users: [{
-                                    id: p.uuid,
-                                    encryption: p.encryption,
-                                    flow: "",
-                                    level: 8
-                                }]
-                            }]
+                            vnext: [
+                                {
+                                    address: p.address,
+                                    port: p.port,
+                                    users: [
+                                        {
+                                            id: p.uuid,
+                                            encryption: p.encryption,
+                                            flow: "",
+                                            level: 8
+                                        }
+                                    ]
+                                }
+                            ]
                         },
                         streamSettings: {
                             network: p.type,
@@ -439,37 +498,118 @@
                                 serverName: p.sni,
                                 allowInsecure: false,
                                 alpn: ["h2", "http/1.1"],
-                                enableSessionResumption: true
+                                enableSessionResumption: true,
+                                fingerprint: "chrome"
                             },
                             wsSettings: {
                                 path: p.path,
-                                headers: { Host: p.host }
+                                headers: {
+                                    Host: p.host
+                                },
+                                maxEachConn: 100
                             },
-                            sockopt: { tcpFastOpen: true, keepAliveInterval: 20 }
+                            sockopt: {
+                                tcpFastOpen: true,
+                                keepAliveInterval: 20,
+                                tfo: 256,
+                                mark: 255
+                            }
                         },
-                        mux: { enabled: true, concurrency: 8 },
+                        mux: {
+                            enabled: true,
+                            concurrency: 8
+                        },
                         tag: "proxy"
                     },
                     {
                         protocol: "freedom",
-                        settings: { domainStrategy: "UseIP" },
+                        settings: {
+                            domainStrategy: "IPIfNonMatch",
+                            redirect: ""
+                        },
+                        streamSettings: {
+                            sockopt: {
+                                tcpFastOpen: true,
+                                keepAliveInterval: 20,
+                                tfo: 256
+                            }
+                        },
                         tag: "direct"
                     },
                     {
+                        protocol: "freedom",
+                        settings: {
+                            domainStrategy: "UseIP"
+                        },
+                        tag: "warp"
+                    },
+                    {
                         protocol: "blackhole",
-                        settings: { response: { type: "http" } },
+                        settings: {
+                            response: {
+                                type: "http"
+                            }
+                        },
                         tag: "block"
+                    },
+                    {
+                        protocol: "dns",
+                        tag: "dns-out"
                     }
                 ],
                 routing: {
                     domainStrategy: "IPIfNonMatch",
+                    balancers: [],
                     rules: [
-                        { type: "field", ip: ["geoip:private"], outboundTag: "direct" },
-                        { type: "field", domain: ["geosite:private"], outboundTag: "direct" },
-                        { type: "field", protocol: ["bittorrent"], outboundTag: "block" }
+                        {
+                            type: "field",
+                            inboundTag: ["dns-in"],
+                            outboundTag: "dns-out"
+                        },
+                        {
+                            type: "field",
+                            domain: ["geosite:private", "geosite:cn"],
+                            outboundTag: "direct"
+                        },
+                        {
+                            type: "field",
+                            ip: ["geoip:private", "geoip:cn"],
+                            outboundTag: "direct"
+                        },
+                        {
+                            type: "field",
+                            protocol: ["bittorrent"],
+                            outboundTag: "block"
+                        },
+                        {
+                            type: "field",
+                            domain: ["geosite:youtube", "geosite:facebook"],
+                            outboundTag: "proxy"
+                        },
+                        {
+                            type: "field",
+                            outboundTag: "proxy",
+                            balancingTag: ""
+                        }
                     ]
                 },
-                remarks: p.remarks
+                remarks: p.remarks,
+                policy: {
+                    levels: {
+                        8: {
+                            connIdle: 300,
+                            uplinkOnly: 2,
+                            downlinkOnly: 3,
+                            statsUserUplink: true,
+                            statsUserDownlink: true,
+                            bufferSize: 10240
+                        }
+                    },
+                    system: {
+                        statsInboundDownlink: true,
+                        statsInboundUplink: true
+                    }
+                }
             };
         }
 
@@ -509,9 +649,41 @@
 
         function copyToClipboard() {
             if (currentJson) {
-                navigator.clipboard.writeText(JSON.stringify(currentJson, null, 2));
-                showStatus('✅ JSON copied ke clipboard!', 'success');
+                const jsonText = JSON.stringify(currentJson, null, 2);
+                
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(jsonText)
+                        .then(() => {
+                            showStatus('✅ JSON copied ke clipboard!', 'success');
+                        })
+                        .catch(() => {
+                            fallbackCopy(jsonText);
+                        });
+                } else {
+                    fallbackCopy(jsonText);
+                }
             }
+        }
+
+        function fallbackCopy(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            
+            try {
+                textarea.select();
+                if (document.execCommand('copy')) {
+                    showStatus('✅ JSON copied ke clipboard!', 'success');
+                } else {
+                    showStatus('❌ Copy gagal - silakan copy manual', 'error');
+                }
+            } catch (err) {
+                showStatus('❌ Copy gagal - silakan copy manual', 'error');
+            }
+            
+            document.body.removeChild(textarea);
         }
 
         function downloadJson() {
