@@ -368,7 +368,7 @@
             
             <div class="input-description">Mendukung format VLESS WebSocket (WS), TLS/Non-TLS dengan SNI &amp; Path otomatis.</div>
 
-            <textarea id="vlessInput" placeholder="vless://uuid@host:port?parameters#Remarks">vless://0129610f-6743-409b-959f-c187f4fb1e6a@r2.amier.cassanova.biz.id:443?path=%2Fvless&security=tls&encryption=none&host=sgdo5.cassanova.biz.id&type=ws&sni=sgdo5.cassanova.biz.id#Roni%E3%80%8A02%E3%80%8B%F0%9F%94%B4</textarea>
+            <textarea id="vlessInput" placeholder="vless://uuid@host:port?parameters#Remarks"></textarea>
 
             <button class="btn-convert" onclick="convertToJson()">🚀 Convert to JSON</button>
         </div>
@@ -775,13 +775,6 @@
                 showStatus('❌ Gagal mengunduh file JSON: ' + err.message, 'error');
             }
         }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const initialVal = document.getElementById('vlessInput').value.trim();
-            if (initialVal) {
-                convertToJson();
-            }
-        });
     </script>
 </body>
 </html>
