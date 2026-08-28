@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -12,64 +13,79 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-            background: linear-gradient(to bottom, #1a3a6b 0%, #2d5a8c 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #09172e 0%, #12284c 50%, #1d3b68 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 24px 16px;
+            color: #f1f5f9;
         }
 
         .container {
             width: 100%;
-            max-width: 600px;
+            max-width: 640px;
+            margin: auto;
         }
 
         .header {
             text-align: center;
             color: white;
-            margin-bottom: 30px;
-            background: linear-gradient(to bottom, #1a3a6b 0%, #2d5a8c 100%);
+            margin-bottom: 22px;
+            background: linear-gradient(145deg, rgba(22, 48, 86, 0.95), rgba(35, 71, 115, 0.95));
             border: 2px solid #d4af37;
             border-radius: 16px;
-            padding: 28px 24px;
-            box-shadow: 0 4px 20px rgba(26, 58, 107, 0.3);
+            padding: 24px 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
         }
 
         .header h1 {
-            font-size: 26px;
-            font-weight: 700;
-            margin-bottom: 12px;
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 10px;
             letter-spacing: 2px;
             border: 2px solid #d4af37;
-            padding: 10px 16px;
+            padding: 8px 20px;
             display: inline-block;
+            border-radius: 8px;
+            color: #ffd966;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
         }
 
         .header p {
             font-size: 13px;
             color: #e8d4a8;
             line-height: 1.6;
-            margin: 16px 0 0 0;
-            border-top: 1px solid #d4af37;
-            padding-top: 14px;
+            margin: 14px 0 0 0;
+            border-top: 1px solid rgba(212, 175, 55, 0.35);
+            padding-top: 12px;
         }
 
-        .input-section {
-            background: linear-gradient(135deg, #264a7a 0%, #3a5f8e 100%);
-            border-left: 3px solid #d4af37;
-            border-radius: 12px;
-            padding: 24px;
+        .card {
+            background: linear-gradient(145deg, #162c4e 0%, #224270 100%);
+            border-left: 4px solid #d4af37;
+            border-radius: 14px;
+            padding: 20px;
             margin-bottom: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
         }
 
         .input-label {
-            color: white;
-            font-weight: 600;
+            color: #ffd966;
+            font-weight: 700;
             font-size: 14px;
-            margin-bottom: 8px;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -77,113 +93,153 @@
 
         .input-description {
             font-size: 12px;
-            color: #bbb;
+            color: #cbd5e1;
             margin-bottom: 12px;
+            line-height: 1.4;
         }
 
-        .paste-button-row {
+        .action-row {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             align-items: center;
-            margin-bottom: 12px;
-            font-size: 12px;
-            color: #bbb;
+            gap: 8px;
         }
 
-        .btn-paste {
-            background: rgba(212, 175, 55, 0.2);
-            color: #d4af37;
-            border: 1px solid #d4af37;
-            padding: 8px 16px;
-            border-radius: 8px;
+        .btn-small {
+            background: rgba(212, 175, 55, 0.15);
+            color: #ffd966;
+            border: 1px solid rgba(212, 175, 55, 0.6);
+            padding: 6px 14px;
+            border-radius: 6px;
             font-weight: 600;
             font-size: 12px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
         }
 
-        .btn-paste:hover {
+        .btn-small:hover {
             background: rgba(212, 175, 55, 0.3);
+            border-color: #ffd966;
+        }
+
+        .btn-small.danger {
+            color: #fca5a5;
+            border-color: rgba(239, 68, 68, 0.4);
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .btn-small.danger:hover {
+            background: rgba(239, 68, 68, 0.25);
+            border-color: #ef4444;
         }
 
         textarea {
             width: 100%;
-            height: 140px;
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid #d4af37;
+            height: 110px;
+            background: rgba(8, 20, 38, 0.7);
+            border: 1px solid rgba(212, 175, 55, 0.45);
             border-radius: 8px;
             padding: 12px;
-            color: #ccc;
-            font-family: 'Courier New', monospace;
+            color: #f8fafc;
+            font-family: 'Courier New', Courier, monospace;
             font-size: 12px;
-            resize: none;
-            margin-bottom: 12px;
-            transition: all 0.3s ease;
+            resize: vertical;
+            margin-bottom: 14px;
+            transition: all 0.2s ease;
+            word-break: break-all;
         }
 
         textarea:focus {
             outline: none;
-            border-color: #d4af37;
-            background: rgba(0, 0, 0, 0.3);
-            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+            border-color: #ffd966;
+            background: rgba(8, 20, 38, 0.9);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
         }
 
         textarea::placeholder {
-            color: #888;
+            color: #64748b;
         }
 
         .btn-convert {
             width: 100%;
             padding: 14px;
-            background: #d4af37;
-            color: #1a3a6b;
+            background: linear-gradient(135deg, #d4af37 0%, #f3c642 100%);
+            color: #0d1b2a;
             border: none;
             border-radius: 8px;
             font-weight: 700;
-            font-size: 16px;
+            font-size: 15px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 14px rgba(212, 175, 55, 0.35);
         }
 
         .btn-convert:hover {
-            background: #c9a127;
-            transform: translateY(-2px);
+            background: linear-gradient(135deg, #c49f2c 0%, #e5b835 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(212, 175, 55, 0.45);
         }
 
-        .output-section {
-            background: linear-gradient(135deg, #264a7a 0%, #3a5f8e 100%);
-            border-left: 3px solid #d4af37;
-            border-radius: 12px;
-            padding: 24px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+        .btn-convert:active {
+            transform: translateY(1px);
         }
 
-        .output-label {
-            color: white;
+        .status-msg {
+            padding: 10px 14px;
+            border-radius: 8px;
+            margin-bottom: 14px;
+            font-size: 12px;
             font-weight: 600;
-            font-size: 14px;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            display: none;
+            text-align: center;
+            animation: fadeIn 0.25s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .status-msg.show {
+            display: block;
+        }
+
+        .status-msg.success {
+            background: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+            border: 1px solid rgba(74, 222, 128, 0.4);
+        }
+
+        .status-msg.error {
+            background: rgba(239, 68, 68, 0.15);
+            color: #f87171;
+            border: 1px solid rgba(248, 113, 113, 0.4);
         }
 
         .json-output {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid #d4af37;
+            background: rgba(6, 16, 32, 0.85);
+            border: 1px solid rgba(212, 175, 55, 0.4);
             border-radius: 8px;
-            padding: 12px;
-            color: #ccc;
-            font-family: 'Courier New', monospace;
+            padding: 14px;
+            color: #e2e8f0;
+            font-family: 'Courier New', Courier, monospace;
             font-size: 11px;
-            line-height: 1.4;
-            max-height: 220px;
+            line-height: 1.5;
+            max-height: 240px;
             overflow-y: auto;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             display: none;
             white-space: pre-wrap;
             word-wrap: break-word;
+            user-select: text;
         }
 
         .json-output.show {
@@ -196,6 +252,7 @@
 
         .json-output::-webkit-scrollbar-track {
             background: rgba(0, 0, 0, 0.2);
+            border-radius: 3px;
         }
 
         .json-output::-webkit-scrollbar-thumb {
@@ -205,20 +262,23 @@
 
         .empty-state {
             text-align: center;
-            padding: 30px 20px;
-            color: #bbb;
+            padding: 28px 16px;
+            color: #94a3b8;
+            border: 1px dashed rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.1);
         }
 
         .empty-state p {
             font-size: 13px;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
 
         .btn-actions {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
             display: none;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 12px;
         }
 
         .btn-actions.show {
@@ -227,76 +287,58 @@
 
         .btn-action {
             padding: 12px;
-            background: rgba(212, 175, 55, 0.2);
+            background: rgba(212, 175, 55, 0.15);
             border: 1px solid #d4af37;
-            color: #d4af37;
+            color: #ffd966;
             border-radius: 8px;
             font-weight: 600;
             font-size: 13px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
         }
 
         .btn-action:hover {
-            background: rgba(212, 175, 55, 0.3);
+            background: rgba(212, 175, 55, 0.28);
         }
 
-        .status-msg {
-            padding: 12px 16px;
-            border-radius: 8px;
-            margin-bottom: 16px;
-            font-size: 12px;
-            font-weight: 600;
-            display: none;
-            text-align: center;
-        }
-
-        .status-msg.show {
-            display: block;
-        }
-
-        .status-msg.success {
-            background: rgba(132, 250, 176, 0.2);
-            color: #84fab0;
-            border: 1px solid #84fab0;
-        }
-
-        .status-msg.error {
-            background: rgba(229, 75, 74, 0.2);
-            color: #e54b4a;
-            border: 1px solid #e54b4a;
+        .btn-action:active {
+            transform: scale(0.98);
         }
 
         .info-box {
-            background: rgba(212, 175, 55, 0.1);
+            background: rgba(212, 175, 55, 0.08);
             border-left: 3px solid #d4af37;
             border-radius: 8px;
-            padding: 12px 16px;
+            padding: 14px;
             margin-top: 16px;
             font-size: 12px;
-            color: #bbb;
-            line-height: 1.6;
+            color: #cbd5e1;
+            line-height: 1.7;
         }
 
         .info-box strong {
-            color: #d4af37;
+            color: #ffd966;
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
+            font-size: 13px;
         }
 
         @media (max-width: 600px) {
             .header h1 {
-                font-size: 22px;
-                padding: 8px 12px;
+                font-size: 20px;
+                padding: 6px 14px;
             }
 
-            .input-section,
-            .output-section {
+            .card {
                 padding: 16px;
             }
 
             textarea {
-                height: 110px;
+                height: 95px;
                 font-size: 11px;
             }
 
@@ -309,171 +351,261 @@
 </head>
 <body>
     <div class="container">
+        <!-- HEADER -->
         <div class="header">
             <h1>CASSANOVA</h1>
-            <p>VLESS to JSON Converter<br/><br/>Smart Conversion with Performance &<br/>Advanced Optimization</p>
+            <p>VLESS to JSON Converter<br>Smart Conversion with Custom Structure &amp; Secure TLS</p>
         </div>
 
-        <div class="input-section">
-            <div class="input-label">📝 Paste VLESS URI Anda</div>
-            <div class="input-description">Paste VLESS URI lengkap dengan parameter di kotak bawah</div>
-            
-            <div class="paste-button-row">
-                <span>Atau gunakan:</span>
-                <button class="btn-paste" onclick="pasteFromClipboard()">📋 Paste dari Clipboard</button>
+        <!-- INPUT SECTION -->
+        <div class="card">
+            <div class="card-header">
+                <div class="input-label">📝 Paste VLESS URI</div>
+                <div class="action-row">
+                    <button class="btn-small" onclick="pasteFromClipboard()">📋 Paste</button>
+                    <button class="btn-small danger" onclick="clearInput()">🗑️ Clear</button>
+                </div>
             </div>
+            
+            <div class="input-description">Mendukung format VLESS WebSocket (WS), TLS/Non-TLS dengan SNI &amp; Path otomatis.</div>
 
-            <textarea id="vlessInput" placeholder="vless://uuid@host:port?parameters...">vless://c6c1760f-f6af-4a54-8600-cf9c9971f7d8@x1.amier.cassanova.biz.id:443?path=%2Fvless&security=tls&encryption=none&host=sgdo1.cassanova.xyz&type=ws&sni=sgdo1.cassanova.xyz#Admin%201</textarea>
+            <textarea id="vlessInput" placeholder="vless://uuid@host:port?parameters#Remarks">vless://0129610f-6743-409b-959f-c187f4fb1e6a@r2.amier.cassanova.biz.id:443?path=%2Fvless&security=tls&encryption=none&host=sgdo5.cassanova.biz.id&type=ws&sni=sgdo5.cassanova.biz.id#Roni%E3%80%8A02%E3%80%8B%F0%9F%94%B4</textarea>
 
             <button class="btn-convert" onclick="convertToJson()">🚀 Convert to JSON</button>
         </div>
 
-        <div class="output-section">
-            <div class="output-label">✨ Hasil JSON Config</div>
+        <!-- OUTPUT SECTION -->
+        <div class="card">
+            <div class="input-label" style="margin-bottom: 12px;">✨ Hasil JSON Config</div>
             
             <div class="status-msg" id="statusMsg"></div>
             
             <div class="empty-state" id="emptyState">
-                <p>JSON config akan ditampilkan di sini</p>
-                <p style="font-size: 11px; margin-top: 8px;">Convert VLESS URI untuk melihat hasil</p>
+                <p><strong>JSON config belum dibuat</strong></p>
+                <p style="font-size: 11px; margin-top: 4px;">Tempel VLESS URI di atas lalu klik tombol <em>Convert</em></p>
             </div>
 
-            <div class="json-output" id="jsonOutput"></div>
+            <pre class="json-output" id="jsonOutput"></pre>
 
             <div class="btn-actions" id="btnActions">
                 <button class="btn-action" onclick="copyToClipboard()">📋 Copy JSON</button>
-                <button class="btn-action" onclick="downloadJson()">⬇️ Download</button>
+                <button class="btn-action" onclick="downloadJson()">⬇️ Download .json</button>
             </div>
 
             <div class="info-box">
-                <strong>💡 Cara Pakai:</strong>
-                1️⃣ Paste VLESS URI<br/>
-                2️⃣ Klik Convert<br/>
-                3️⃣ Copy atau Download<br/>
-                4️⃣ Import ke v2rayNG
+                <strong>💡 Panduan Penggunaan:</strong>
+                1️⃣ Paste VLESS URI pada kolom input.<br>
+                2️⃣ Klik tombol <strong>Convert to JSON</strong>.<br>
+                3️⃣ Klik <strong>Copy</strong> atau <strong>Download</strong> file JSON.<br>
+                4️⃣ Import file/teks JSON ke aplikasi v2rayNG.
             </div>
         </div>
     </div>
 
     <script>
         let currentJson = null;
+        let statusTimeout = null;
+
+        function showStatus(message, type = 'success') {
+            const statusEl = document.getElementById('statusMsg');
+            statusEl.textContent = message;
+            statusEl.className = 'status-msg show ' + type;
+            
+            if (statusTimeout) clearTimeout(statusTimeout);
+            statusTimeout = setTimeout(() => {
+                statusEl.classList.remove('show');
+            }, 4000);
+        }
+
+        function clearInput() {
+            document.getElementById('vlessInput').value = '';
+            document.getElementById('jsonOutput').classList.remove('show');
+            document.getElementById('emptyState').style.display = 'block';
+            document.getElementById('btnActions').classList.remove('show');
+            currentJson = null;
+            showStatus('Input telah dikosongkan', 'success');
+        }
 
         function parseVlessUri(uri) {
-            try {
-                const clean = uri.replace('vless://', '').trim();
-                const [main, remarks] = clean.split('#');
-                const [userPart, hostPart] = main.split('@');
-                const [addrPart, paramPart] = hostPart.split('?');
-                
-                const portMatch = addrPart.match(/:(\d+)$/);
-                const port = portMatch ? parseInt(portMatch[1]) : 443;
-                const address = addrPart.replace(/:(\d+)$/, '');
-                const uuid = userPart;
+            uri = (uri || '').trim();
+            if (!uri) throw new Error('Kolom VLESS URI tidak boleh kosong');
+            if (!uri.toLowerCase().startsWith('vless://')) throw new Error('URI harus berformat VLESS (diawali dengan "vless://")');
 
-                const params = new URLSearchParams(paramPart || '');
-                
+            try {
+                const raw = uri.substring(8);
+                const hashIndex = raw.indexOf('#');
+                const mainPart = hashIndex !== -1 ? raw.substring(0, hashIndex) : raw;
+                const remarks = hashIndex !== -1 ? decodeURIComponent(raw.substring(hashIndex + 1)) : 'CASSANOVA Config';
+
+                const atIndex = mainPart.indexOf('@');
+                if (atIndex === -1) throw new Error('Format salah: UUID tidak ditemukan (karakter @ hilang)');
+
+                const uuid = mainPart.substring(0, atIndex).trim();
+                const hostPart = mainPart.substring(atIndex + 1);
+
+                const qIndex = hostPart.indexOf('?');
+                const addrPart = qIndex !== -1 ? hostPart.substring(0, qIndex) : hostPart;
+                const paramPart = qIndex !== -1 ? hostPart.substring(qIndex + 1) : '';
+
+                let address = addrPart;
+                let port = 443;
+
+                if (addrPart.startsWith('[')) {
+                    const closeBracket = addrPart.indexOf(']');
+                    address = addrPart.substring(1, closeBracket);
+                    const portMatch = addrPart.substring(closeBracket + 1).match(/:(\d+)$/);
+                    if (portMatch) port = parseInt(portMatch[1], 10);
+                } else if (addrPart.includes(':')) {
+                    const parts = addrPart.split(':');
+                    address = parts[0];
+                    port = parseInt(parts[1], 10) || 443;
+                }
+
+                const params = new URLSearchParams(paramPart);
+
                 return {
-                    uuid,
-                    address,
-                    port,
+                    uuid: uuid,
+                    address: address,
+                    port: port,
                     path: decodeURIComponent(params.get('path') || '/'),
                     security: params.get('security') || 'tls',
                     encryption: params.get('encryption') || 'none',
                     host: params.get('host') || address,
-                    type: params.get('type') || 'tcp',
+                    type: params.get('type') || 'ws',
                     sni: params.get('sni') || params.get('host') || address,
-                    remarks: remarks ? decodeURIComponent(remarks) : 'CASSANOVA Config'
+                    remarks: remarks || 'CASSANOVA Config'
                 };
             } catch (err) {
-                throw new Error('Parse Error: Format VLESS URI tidak valid');
+                throw new Error(err.message || 'Gagal memproses format VLESS URI');
             }
         }
 
         function generateOptimalJson(p) {
+            const streamSettings = {
+                network: p.type,
+                security: p.security
+            };
+
+            if (p.security === 'tls') {
+                streamSettings.tlsSettings = {
+                    serverName: p.sni,
+                    allowInsecure: false
+                };
+            }
+
+            if (p.type === 'ws') {
+                streamSettings.wsSettings = {
+                    path: p.path,
+                    headers: {
+                        Host: p.host
+                    }
+                };
+            }
+
             return {
+                log: {
+                    loglevel: "none",
+                    dnsLog: false
+                },
+                api: {
+                    tag: "api",
+                    services: [
+                        "HandlerService",
+                        "LoggerService",
+                        "StatsService"
+                    ]
+                },
                 dns: {
                     hosts: {
                         "domain:googleapis.cn": "googleapis.com",
-                        "domain:gstatic.com": "googleapis.com",
-                        "domain:google.com": "8.8.8.8"
+                        "dns.alidns.com": [
+                            "223.5.5.5",
+                            "223.6.6.6"
+                        ],
+                        "one.one.one.one": [
+                            "1.1.1.1",
+                            "1.0.0.1"
+                        ],
+                        "dns.google": [
+                            "8.8.8.8",
+                            "8.8.4.4"
+                        ]
                     },
                     servers: [
-                        {
-                            "address": "1.1.1.1",
-                            "clientIp": "1.2.3.4",
-                            "domains": ["geosite:google"]
-                        },
-                        {
-                            "address": "8.8.8.8",
-                            "domains": ["geosite:facebook", "geosite:youtube"]
-                        },
-                        {
-                            "address": "223.5.5.5",
-                            "domains": ["geosite:cn"]
-                        },
-                        "1.1.1.1",
                         "8.8.8.8",
-                        "223.5.5.5"
-                    ]
+                        "1.1.1.1"
+                    ],
+                    queryStrategy: "UseIPv4",
+                    tag: "dns"
+                },
+                policy: {
+                    levels: {
+                        "0": {
+                            handshake: 4,
+                            connIdle: 300,
+                            uplinkOnly: 2,
+                            downlinkOnly: 5,
+                            bufferSize: 4096,
+                            statsUserUplink: true,
+                            statsUserDownlink: true
+                        },
+                        "8": {
+                            handshake: 4,
+                            connIdle: 300,
+                            uplinkOnly: 2,
+                            downlinkOnly: 5,
+                            bufferSize: 4096,
+                            statsUserUplink: true,
+                            statsUserDownlink: true
+                        }
+                    },
+                    system: {
+                        statsInboundUplink: true,
+                        statsInboundDownlink: true
+                    }
                 },
                 inbounds: [
                     {
-                        listen: "127.0.0.1",
+                        tag: "socks",
                         port: 10808,
+                        listen: "127.0.0.1",
                         protocol: "socks",
+                        sniffing: {
+                            enabled: true,
+                            destOverride: [
+                                "http",
+                                "tls",
+                                "quic"
+                            ],
+                            routeOnly: false
+                        },
                         settings: {
                             auth: "noauth",
                             udp: true,
                             userLevel: 8
-                        },
-                        sniffing: {
-                            destOverride: ["http", "tls", "quic", "fakedns"],
-                            enabled: true,
-                            routeOnly: true
-                        },
-                        streamSettings: {
-                            sockopt: {
-                                tcpFastOpen: true,
-                                keepAliveInterval: 20,
-                                tfo: 256
-                            }
-                        },
-                        tag: "socks"
+                        }
                     },
                     {
-                        listen: "127.0.0.1",
+                        tag: "http",
                         port: 10809,
-                        protocol: "http",
-                        settings: {
-                            timeout: 360,
-                            allowTransparent: true
-                        },
-                        streamSettings: {
-                            sockopt: {
-                                tcpFastOpen: true,
-                                keepAliveInterval: 20
-                            }
-                        },
-                        tag: "http"
-                    },
-                    {
                         listen: "127.0.0.1",
-                        port: 10853,
-                        protocol: "dokodemo-door",
-                        settings: {
-                            address: "1.1.1.1",
-                            network: "tcp,udp",
-                            port: 53
+                        protocol: "http",
+                        sniffing: {
+                            enabled: true,
+                            destOverride: [
+                                "http",
+                                "tls",
+                                "quic"
+                            ]
                         },
-                        tag: "dns-in"
+                        settings: {
+                            userLevel: 8
+                        }
                     }
                 ],
-                log: {
-                    loglevel: "warning",
-                    access: ""
-                },
                 outbounds: [
                     {
+                        tag: "proxy",
                         protocol: "vless",
                         settings: {
                             vnext: [
@@ -484,149 +616,76 @@
                                         {
                                             id: p.uuid,
                                             encryption: p.encryption,
-                                            flow: "",
                                             level: 8
                                         }
                                     ]
                                 }
                             ]
                         },
-                        streamSettings: {
-                            network: p.type,
-                            security: p.security,
-                            tlsSettings: {
-                                serverName: p.sni,
-                                allowInsecure: false,
-                                alpn: ["h2", "http/1.1"],
-                                enableSessionResumption: true,
-                                fingerprint: "chrome"
-                            },
-                            wsSettings: {
-                                path: p.path,
-                                headers: {
-                                    Host: p.host
-                                },
-                                maxEachConn: 100
-                            },
-                            sockopt: {
-                                tcpFastOpen: true,
-                                keepAliveInterval: 20,
-                                tfo: 256,
-                                mark: 255
-                            }
-                        },
-                        mux: {
-                            enabled: true,
-                            concurrency: 8
-                        },
-                        tag: "proxy"
+                        streamSettings: streamSettings
                     },
                     {
-                        protocol: "freedom",
-                        settings: {
-                            domainStrategy: "IPIfNonMatch",
-                            redirect: ""
-                        },
-                        streamSettings: {
-                            sockopt: {
-                                tcpFastOpen: true,
-                                keepAliveInterval: 20,
-                                tfo: 256
-                            }
-                        },
-                        tag: "direct"
-                    },
-                    {
+                        tag: "direct",
                         protocol: "freedom",
                         settings: {
                             domainStrategy: "UseIP"
-                        },
-                        tag: "warp"
+                        }
                     },
                     {
+                        tag: "block",
                         protocol: "blackhole",
                         settings: {
                             response: {
                                 type: "http"
                             }
-                        },
-                        tag: "block"
-                    },
-                    {
-                        protocol: "dns",
-                        tag: "dns-out"
+                        }
                     }
                 ],
                 routing: {
                     domainStrategy: "IPIfNonMatch",
-                    balancers: [],
+                    domainMatcher: "mph",
                     rules: [
                         {
                             type: "field",
-                            inboundTag: ["dns-in"],
-                            outboundTag: "dns-out"
-                        },
-                        {
-                            type: "field",
-                            domain: ["geosite:private", "geosite:cn"],
-                            outboundTag: "direct"
-                        },
-                        {
-                            type: "field",
-                            ip: ["geoip:private", "geoip:cn"],
-                            outboundTag: "direct"
-                        },
-                        {
-                            type: "field",
-                            protocol: ["bittorrent"],
-                            outboundTag: "block"
-                        },
-                        {
-                            type: "field",
-                            domain: ["geosite:youtube", "geosite:facebook"],
+                            ip: [
+                                "8.8.8.8",
+                                "1.1.1.1"
+                            ],
+                            port: "53",
                             outboundTag: "proxy"
                         },
                         {
                             type: "field",
-                            outboundTag: "proxy",
-                            balancingTag: ""
+                            port: "443",
+                            network: "udp",
+                            outboundTag: "block"
+                        },
+                        {
+                            type: "field",
+                            port: "0-65535",
+                            outboundTag: "proxy"
                         }
                     ]
                 },
-                remarks: p.remarks,
-                policy: {
-                    levels: {
-                        8: {
-                            connIdle: 300,
-                            uplinkOnly: 2,
-                            downlinkOnly: 3,
-                            statsUserUplink: true,
-                            statsUserDownlink: true,
-                            bufferSize: 10240
-                        }
-                    },
-                    system: {
-                        statsInboundDownlink: true,
-                        statsInboundUplink: true
-                    }
-                }
+                stats: {},
+                remarks: p.remarks
             };
         }
 
         function convertToJson() {
             try {
                 const input = document.getElementById('vlessInput').value.trim();
-                if (!input) throw new Error('Masukkan VLESS URI terlebih dahulu');
-                
                 const params = parseVlessUri(input);
                 currentJson = generateOptimalJson(params);
                 
-                document.getElementById('jsonOutput').textContent = JSON.stringify(currentJson, null, 2);
-                document.getElementById('jsonOutput').classList.add('show');
+                const outputEl = document.getElementById('jsonOutput');
+                outputEl.textContent = JSON.stringify(currentJson, null, 2);
+                outputEl.classList.add('show');
+                
                 document.getElementById('emptyState').style.display = 'none';
                 document.getElementById('btnActions').classList.add('show');
                 
-                showStatus('✅ JSON berhasil dikonversi!', 'success');
+                showStatus('✅ Konversi berhasil!', 'success');
             } catch (err) {
                 showStatus('❌ ' + err.message, 'error');
                 document.getElementById('jsonOutput').classList.remove('show');
@@ -635,83 +694,96 @@
             }
         }
 
-        function pasteFromClipboard() {
-            navigator.clipboard.readText()
-                .then(text => {
-                    document.getElementById('vlessInput').value = text;
-                    showStatus('✅ Paste dari clipboard sukses', 'success');
-                    convertToJson();
-                })
-                .catch(err => {
-                    showStatus('❌ Gagal paste - cek permission clipboard', 'error');
-                });
+        async function pasteFromClipboard() {
+            try {
+                if (navigator.clipboard && navigator.clipboard.readText) {
+                    const text = await navigator.clipboard.readText();
+                    if (text && text.trim()) {
+                        document.getElementById('vlessInput').value = text.trim();
+                        showStatus('✅ Teks berhasil ditempel dari Clipboard', 'success');
+                        convertToJson();
+                        return;
+                    }
+                }
+                throw new Error('Akses clipboard dibatasi');
+            } catch (err) {
+                showStatus('⚠️ Silakan paste secara manual (Ctrl+V)', 'error');
+                document.getElementById('vlessInput').focus();
+            }
         }
 
         function copyToClipboard() {
-            if (currentJson) {
-                const jsonText = JSON.stringify(currentJson, null, 2);
-                
-                if (navigator.clipboard && navigator.clipboard.writeText) {
-                    navigator.clipboard.writeText(jsonText)
-                        .then(() => {
-                            showStatus('✅ JSON copied ke clipboard!', 'success');
-                        })
-                        .catch(() => {
-                            fallbackCopy(jsonText);
-                        });
-                } else {
-                    fallbackCopy(jsonText);
-                }
+            if (!currentJson) {
+                showStatus('⚠️ Belum ada konfigurasi JSON untuk disalin', 'error');
+                return;
             }
-        }
 
-        function fallbackCopy(text) {
-            const textarea = document.createElement('textarea');
-            textarea.value = text;
-            textarea.style.position = 'fixed';
-            textarea.style.opacity = '0';
-            document.body.appendChild(textarea);
-            
+            const jsonText = JSON.stringify(currentJson, null, 2);
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = jsonText;
+            tempTextArea.style.position = 'fixed';
+            tempTextArea.style.left = '-999999px';
+            tempTextArea.style.top = '-999999px';
+            document.body.appendChild(tempTextArea);
+            tempTextArea.focus();
+            tempTextArea.select();
+
             try {
-                textarea.select();
-                if (document.execCommand('copy')) {
-                    showStatus('✅ JSON copied ke clipboard!', 'success');
+                const successful = document.execCommand('copy');
+                document.body.removeChild(tempTextArea);
+                if (successful) {
+                    showStatus('📋 JSON berhasil disalin!', 'success');
                 } else {
-                    showStatus('❌ Copy gagal - silakan copy manual', 'error');
+                    throw new Error('execCommand copy gagal');
                 }
             } catch (err) {
-                showStatus('❌ Copy gagal - silakan copy manual', 'error');
+                document.body.removeChild(tempTextArea);
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(jsonText)
+                        .then(() => showStatus('📋 JSON berhasil disalin!', 'success'))
+                        .catch(() => showStatus('❌ Gagal menyalin ke clipboard', 'error'));
+                } else {
+                    showStatus('❌ Gagal menyalin secara otomatis', 'error');
+                }
             }
-            
-            document.body.removeChild(textarea);
         }
 
         function downloadJson() {
-            if (currentJson) {
-                const data = JSON.stringify(currentJson, null, 2);
-                const blob = new Blob([data], { type: 'application/json' });
+            if (!currentJson) {
+                showStatus('⚠️ Belum ada JSON untuk diunduh', 'error');
+                return;
+            }
+
+            try {
+                const jsonText = JSON.stringify(currentJson, null, 2);
+                const blob = new Blob([jsonText], { type: 'application/json;charset=utf-8' });
                 const url = URL.createObjectURL(blob);
-                const link = document.createElement('a');
-                link.href = url;
-                link.download = 'v2ray-config.json';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
+                const a = document.createElement('a');
+                
+                let safeName = (currentJson.remarks || 'config')
+                    .replace(/[^a-zA-Z0-9_\-]/g, '_')
+                    .toLowerCase();
+                
+                a.href = url;
+                a.download = `${safeName || 'vless_config'}.json`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
                 URL.revokeObjectURL(url);
-                showStatus('✅ JSON downloaded!', 'success');
+                
+                showStatus(`⬇️ Berhasil mengunduh ${a.download}`, 'success');
+            } catch (err) {
+                showStatus('❌ Gagal mengunduh file JSON: ' + err.message, 'error');
             }
         }
 
-        function showStatus(msg, type) {
-            const el = document.getElementById('statusMsg');
-            el.textContent = msg;
-            el.className = 'status-msg show ' + type;
-            setTimeout(() => el.classList.remove('show'), 3000);
-        }
-
-        window.addEventListener('load', () => {
-            convertToJson();
+        window.addEventListener('DOMContentLoaded', () => {
+            const initialVal = document.getElementById('vlessInput').value.trim();
+            if (initialVal) {
+                convertToJson();
+            }
         });
     </script>
 </body>
 </html>
+```
