@@ -84,6 +84,56 @@
             margin-left: 34px;
         }
 
+        .input-header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            margin-left: 34px;
+        }
+
+        .btn-paste-header {
+            background: #f0f0f0;
+            color: #667eea;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+
+        .btn-paste-header:hover {
+            background: #e8e8e8;
+            transform: translateY(-2px);
+        }
+
+        .btn-paste-header:active {
+            transform: scale(0.98);
+        }
+
+        .paste-success {
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-size: 12px;
+            font-weight: 600;
+            text-align: center;
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+
+        .paste-success.show {
+            display: block;
+        }
+
         .input-wrapper {
             position: relative;
             margin-bottom: 15px;
@@ -398,6 +448,15 @@
             <div class="input-description">
                 Paste VLESS URI lengkap dengan parameter di kotak bawah
             </div>
+            <div class="input-header-row">
+                <span style="color: #999; font-size: 12px;">Atau gunakan:</span>
+                <button class="btn-paste-header" onclick="pasteFromClipboard()" title="Paste VLESS URI dari clipboard">
+                    📋 Paste dari Clipboard
+                </button>
+            </div>
+            <div class="paste-success" id="pasteSuccess">
+                ✅ VLESS URI berhasil di-paste dari clipboard!
+            </div>
             <div class="input-wrapper">
                 <textarea id="vlessInput" placeholder="vless://uuid@host:port?parameter...">vless://c6c1760f-f6af-4a54-8600-cf9c9971f7d8@x1.amier.cassanova.biz.id:443?path=%2Fvless&security=tls&encryption=none&host=sgdo1.cassanova.xyz&type=ws&sni=sgdo1.cassanova.xyz#Admin%201</textarea>
             </div>
@@ -476,6 +535,24 @@
 
     <script>
         let currentJson = null;
+
+        function pasteFromClipboard() {
+            navigator.clipboard.readText()
+                .then(text => {
+                    document.getElementById('vlessInput').value = text;
+                    showPasteSuccess();
+                    convertToJson();
+                })
+                .catch(err => {
+                    showStatus('❌ Gagal paste - Cek permission clipboard', false);
+                });
+        }
+
+        function showPasteSuccess() {
+            const pasteMsg = document.getElementById('pasteSuccess');
+            pasteMsg.classList.add('show');
+            setTimeout(() => pasteMsg.classList.remove('show'), 3000);
+        }
 
         function parseVlessUri(uri) {
             try {
